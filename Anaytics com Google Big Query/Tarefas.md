@@ -1,4 +1,4 @@
-# ***Ambiente para análise de dados com ambinete do Google Big Query e linguagem Python***
+# ***Ambiente para análise de dados com Google Big Query e linguagem Python***
 
 
 ## Ferramentas: 
@@ -37,53 +37,85 @@ ORDER BY Loja
 ### Dados
 
 #DimensaoCliente
+
 Cliente_ID,Nome,Email,Nivel_Educacional
+
 0,Henrique FogaÃ§a,maite55@example.com,GraduaÃ§Ã£o
+
 1,Milena Barros,tcardoso@example.com,Ensino MÃ©dio
+
 2,Vitor Nascimento,matheus38@example.org,PÃ³s-GraduaÃ§Ã£o
-3,Maria Sophia Nogueira,catarinamartins@example.net,Ensino MÃ©dio
+
+3,Maria Sophia Nogueira,catarinamartins@example.net,Ensino 
+MÃ©dio
+
 4,Emanuel Duarte,isisramos@example.net,PÃ³s-GraduaÃ§Ã£o
 
 #DimensaoLocalidade
+
 Localidade_ID,Loja,Estado,Pais
+
 0,Loja 4,ParaÃ­ba,Brasil
+
 1,Loja 4,PiauÃ­,Brasil
+
 2,Loja 2,Tocantins,Brasil
+
 3,Loja 4,Santa Catarina,Brasil
+
 4,Loja 3,ParÃ¡,Brasil
 
 #DimensaoProduto
+
 Produto_ID,Nome,Preco
+
 0,Lavadora,2513.53
+
 1,Game Console,1535.74
+
 2,TV 4K,2014.7
+
 3,Lavadora,1789.14
+
 4,Refrigerador,2204.26
 
 #DimensaoTempo
+
 Tempo_ID,Data,Hora
+
 0,2023-04-29,07:46:13
+
 1,2023-11-08,08:47:24
+
 2,2023-04-26,11:11:02
+
 3,2023-03-11,11:55:10
+
 4,2023-06-21,08:14:07
 
 #Fato
+
 Venda_ID,Cliente_ID,Produto_ID,Tempo_ID,Localidade_ID,Quantidade,Total
+
 0,39,40,98,61,2,5937.62
+
 1,38,55,31,62,2,3466.5
+
 2,88,17,63,41,6,11278.86
+
 3,36,4,78,30,3,6612.78
+
 4,55,60,96,41,5,14593.85
+
 
 
 ### Criando gráficos com Looker Studio e Google Colab no DW
 
-Após executar a query SQL: 
+#Após executar a query SQL: 
 
 Selecionar Explorar dados > Explorar com as planilhas ou Explorar com o Looker Studio ou Explorar com Google Colab (Fornece alguns scripts Python, porém também dá para realizar tarefas com o próprio programa)
 
-#Para executar o google Colab na máquina local é necessário criar uma conta de serviço e instalar Python:
+#Para executar o google Colab na máquina local é necessário criar uma conta de serviço, criar chave e instalar Python:
 
 Acessar menu > AIM e administrador > Conta de serviço > Criar conta de serviço 
 
@@ -155,7 +187,7 @@ query = """
 
 
 
-### Executa a query no DW para identificação de anomalias
+### Executa a query anterior no DW para identificação de anomalias
 #Job2.py
 ```
 query_job = client.query(query)
