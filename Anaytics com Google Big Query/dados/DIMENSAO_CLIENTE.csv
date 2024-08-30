@@ -1,0 +1,101 @@
+Cliente_ID,Nome,Email,Nivel_Educacional
+0,Henrique Fogaça,maite55@example.com,Graduação
+1,Milena Barros,tcardoso@example.com,Ensino Médio
+2,Vitor Nascimento,matheus38@example.org,Pós-Graduação
+3,Maria Sophia Nogueira,catarinamartins@example.net,Ensino Médio
+4,Emanuel Duarte,isisramos@example.net,Pós-Graduação
+5,Davi Correia,milena61@example.org,Ensino Médio
+6,Sra. Helena Pinto,moraesvitor-gabriel@example.net,Ensino Médio
+7,Marcelo da Rocha,da-conceicaogabrielly@example.org,Pós-Graduação
+8,Renan Correia,joana75@example.net,Não Declarado
+9,Agatha Duarte,mcavalcanti@example.net,Pós-Graduação
+10,Lara Novaes,maria-fernandaferreira@example.org,Ensino Médio
+11,Letícia da Rocha,maria-luiza44@example.net,Ensino Médio
+12,João Vitor Azevedo,silveiraelisa@example.org,Ensino Médio
+13,Ana Júlia Costela,juliasales@example.com,Ensino Médio
+14,Dra. Júlia Peixoto,julia87@example.com,Graduação
+15,Ana Júlia Costa,emanuelfarias@example.org,Pós-Graduação
+16,Dr. Danilo Ramos,da-cunhasophie@example.com,Pós-Graduação
+17,Natália da Luz,alice29@example.com,Graduação
+18,Maria Vitória Costela,djesus@example.net,Ensino Médio
+19,Srta. Kamilly Azevedo,maria-vitoria86@example.net,Graduação
+20,Dr. Henrique Lopes,leonardo48@example.org,Pós-Graduação
+21,Natália Aragão,ferreirapietra@example.net,Graduação
+22,Kaique Novaes,jesusjoao-lucas@example.com,Não Declarado
+23,Dr. Vicente Cunha,emanuella92@example.net,Não Declarado
+24,Dr. Gabriel Oliveira,caua37@example.com,Graduação
+25,Mariane da Cunha,sophiapereira@example.com,Ensino Médio
+26,Luana Fernandes,eduardajesus@example.net,Graduação
+27,Eduardo Duarte,ana-sophia20@example.org,Pós-Graduação
+28,Dr. Luiz Fernando Viana,juliamonteiro@example.com,Ensino Médio
+29,Carolina Moreira,larissacosta@example.com,Graduação
+30,Stephany Campos,imelo@example.net,Ensino Médio
+31,Yago Moreira,lopesrafael@example.net,Pós-Graduação
+32,Marcos Vinicius Viana,rda-luz@example.net,Ensino Médio
+33,Dr. Bernardo Oliveira,da-rosabenjamin@example.org,Graduação
+34,Raquel Silveira,wgomes@example.org,Ensino Médio
+35,Sr. Pedro Henrique Rocha,brenoazevedo@example.net,Pós-Graduação
+36,Elisa Teixeira,maria-luizalima@example.net,Não Declarado
+37,Caio Costa,vicenteda-mota@example.org,Graduação
+38,Gabriel da Luz,da-rochaisadora@example.net,Ensino Médio
+39,Luiz Felipe da Cruz,qgomes@example.org,Ensino Médio
+40,Levi Barbosa,marcelocosta@example.org,Graduação
+41,Bruno Fernandes,alexandre19@example.net,Ensino Médio
+42,Maria Sophia Ramos,olivia98@example.org,Graduação
+43,Igor Araújo,emanuelcunha@example.net,Pós-Graduação
+44,Vinicius Lima,ooliveira@example.net,Graduação
+45,Natália Porto,xcavalcanti@example.net,Ensino Médio
+46,Emanuelly Moura,leonardo47@example.org,Ensino Médio
+47,Sr. Ryan da Paz,gustavo-henrique20@example.com,Pós-Graduação
+48,Maria Eduarda Farias,nmelo@example.net,Pós-Graduação
+49,Elisa Moura,pedro-lucas52@example.com,Ensino Médio
+50,Juan da Paz,costapedro@example.com,Pós-Graduação
+51,Sofia Pinto,julianada-luz@example.org,Não Declarado
+52,Kamilly Costa,rafaelda-cunha@example.org,Graduação
+53,Heloísa Ferreira,gomesfernanda@example.net,Graduação
+54,Ana Luiza Moraes,maria-sophia34@example.com,Ensino Médio
+55,Sophie Porto,melissa47@example.com,Graduação
+56,Laís Freitas,pereiragabrielly@example.net,Pós-Graduação
+57,Nina Viana,limatheo@example.org,Graduação
+58,Vitor Hugo Aragão,nicoleoliveira@example.com,Pós-Graduação
+59,Emanuelly da Cunha,murilocosta@example.com,Graduação
+60,Nicolas da Rosa,caldeiraemilly@example.org,Ensino Médio
+61,Dr. Enrico Cunha,qjesus@example.com,Pós-Graduação
+62,Thales Nunes,ana-sophiada-paz@example.com,Ensino Médio
+63,Bianca Souza,joao-miguelteixeira@example.org,Ensino Médio
+64,Isadora Lima,cavalcantitheo@example.net,Não Declarado
+65,Brenda da Paz,da-cunhaclarice@example.net,Não Declarado
+66,Eduarda Alves,da-cruzjoao-pedro@example.com,Graduação
+67,Vinicius da Cunha,gabriellynogueira@example.com,Não Declarado
+68,Cauê Ferreira,fernandescecilia@example.net,Pós-Graduação
+69,Dr. Lucas Campos,ncardoso@example.net,Graduação
+70,Yago da Rocha,leonardosilva@example.net,Não Declarado
+71,Henrique Silva,diasraul@example.com,Ensino Médio
+72,Diego Rocha,rezendejulia@example.net,Graduação
+73,Vitor Gabriel Gomes,ana-beatrizcaldeira@example.net,Ensino Médio
+74,Ana Júlia Vieira,fernandesantonio@example.org,Ensino Médio
+75,Heitor Barbosa,ymoura@example.org,Graduação
+76,Bianca Santos,liviajesus@example.com,Graduação
+77,Marcelo da Rosa,wsouza@example.com,Não Declarado
+78,Dra. Isabelly da Conceição,ypeixoto@example.com,Não Declarado
+79,Caio Nascimento,nmartins@example.org,Não Declarado
+80,Kaique Porto,enzo24@example.org,Ensino Médio
+81,Davi Lucca da Costa,mouradavi-lucas@example.net,Graduação
+82,Davi Lucas Novaes,nunesstephany@example.com,Pós-Graduação
+83,Luiz Otávio Sales,nataliabarros@example.net,Pós-Graduação
+84,Kamilly Lima,costelaclarice@example.com,Pós-Graduação
+85,Heitor da Costa,urezende@example.com,Graduação
+86,Ana Dias,vitoria73@example.org,Não Declarado
+87,Ana Vitória Costa,franciscobarbosa@example.com,Ensino Médio
+88,Sr. Gustavo Gonçalves,mmoraes@example.org,Não Declarado
+89,Alexandre Viana,bbarbosa@example.com,Graduação
+90,Dr. Renan Dias,sophia32@example.org,Não Declarado
+91,Mariana Fernandes,ribeirocarlos-eduardo@example.net,Graduação
+92,Julia Fogaça,ana-livia32@example.com,Ensino Médio
+93,Sr. Thomas Rodrigues,benicio60@example.com,Graduação
+94,Kamilly Farias,rezendedavi@example.net,Pós-Graduação
+95,Letícia da Cruz,dnunes@example.org,Ensino Médio
+96,Bernardo Carvalho,calebefogaca@example.net,Não Declarado
+97,Dr. Gabriel Azevedo,lnogueira@example.com,Ensino Médio
+98,Fernando Lopes,enogueira@example.com,Pós-Graduação
+99,Eloah Viana,fariasbernardo@example.org,Graduação
