@@ -1,4 +1,4 @@
-# ***Configuração de Databricks para processamento de dados com PySpark e análise utilizando SQL***
+# ***Configuração de Databricks para processamento de dados com PySpark e análise de dados utilizando SQL***
 
 ## Ferramentas: 
 
