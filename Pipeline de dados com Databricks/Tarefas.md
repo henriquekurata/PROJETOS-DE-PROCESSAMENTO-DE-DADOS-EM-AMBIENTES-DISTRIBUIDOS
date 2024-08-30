@@ -1,4 +1,4 @@
-# ***Pipeline para processamento de dados com banco relacional, Airbyte e Databricks***
+# ***Pipeline para processamento de dados com banco relacional, Airbyte, Databricks e análise com SQL***
 
 
 ## Ferramentas: 
@@ -17,14 +17,16 @@ Já estão listados junto aos comandos.
 
 ### Fonte de dados
 
-Instalar o Docker de acordo com o sistema operacional da máquina local
+#Instalar o Docker de acordo com o sistema operacional da máquina local
 
-Executar o comando para baixar a imagem e criar o container:
+#Executar o comando para baixar a imagem e criar o container:
 
 docker run --name db-dsa-fonte -p 5432:5432 -e POSTGRES_USER=dbadmin -e POSTGRES_PASSWORD=dbadmin123 -e POSTGRES_DB=postgresDSADB -d postgres
 
 Container Docker = db-dsa-fonte
+
 Banco de dados = postgresDSADB
+
 Schema = dbadmin
 
 
@@ -38,7 +40,7 @@ https://www.pgadmin.org
 CREATE SCHEMA dbadmin AUTHORIZATION dbadmin;
 ```
 
-#Criar tabela
+#Criar tabelas
 ```
 CREATE TABLE dbadmin.tb_usuarios
 (
@@ -166,8 +168,7 @@ Incremental/Append: Adicionar apenas os dados que ainda não existem no destino 
 
 Clicar em sync now (Execução do pipeline de integração de dados)
 
-
-### Pipeline de Analytics com Apache Spark no Databricks com Python
+### Análise de dados com SQL
 
 Abrir Workspace :
 
