@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  spark-master:
+    container_name: dsa-spark-master
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: dsa-spark-image
+    entrypoint: ['./entrypoint.sh', 'master']
+    volumes:
+      - ./dados:/opt/spark/data
+      - ./jobs:/opt/spark/apps
+    env_file:
+      - .env.spark
+    ports:
+      - '9090:8080'
+      - '9870:9870'
+      - '7077:7077'
+      - '8088:8088'
+
+
+  spark-worker:
+    image: dsa-spark-image
+    entrypoint: ['./entrypoint.sh', 'worker']
+    depends_on:
+      - spark-master
+    env_file:
+      - .env.spark
+    volumes:
+      - ./dados:/opt/spark/data
+      - ./jobs:/opt/spark/apps
+
+  history-server:
+    container_name: dsa-spark-history
+    image: dsa-spark-image
+    entrypoint: ['./entrypoint.sh', 'history']
+    depends_on:
+      - spark-master
+    env_file:
+      - .env.spark
+    ports:
+      - '18080:18080'
