@@ -1,25 +1,35 @@
-# ***Pipeline para processamento de dados com banco relacional, Airbyte, Databricks e análise com SQL***
+# 🚀 ***Pipeline para processamento de dados com banco relacional, Airbyte, Databricks e análise com SQL***
+
+## 📖 **Descrição do Projeto:**
+Este projeto envolve a criação de um pipeline de dados que conecta um banco de dados relacional local em PostgreSQL com um Data Lakehouse na nuvem utilizando o Airbyte como ferramenta de ETL. O pipeline extrai os dados do banco de dados local, processa-os no Databricks e armazena-os em um bucket S3 na AWS. Os dados são então analisados com SQL no Databricks, onde também foram criados gráficos e dashboards para visualização.
 
 
-## Ferramentas: 
+## Funcionalidades Principais
+1. **Criação do banco de dados local**: Banco PostgreSQL criado e gerenciado em um container Docker, com tabelas de usuários e cidades e relacionamento entre elas.
+2. **Integração de dados**: Utilização do Airbyte para extrair dados do PostgreSQL e carregar no Databricks, configurando fontes e destinos de forma automatizada.
+3. **Armazenamento em Data Lake**: Os dados processados foram armazenados no bucket S3 na AWS, acessíveis diretamente pela interface Databricks.
+4. **Análise de dados com SQL**: Consultas SQL realizadas no Databricks para combinar e visualizar os dados, com a criação de gráficos e dashboards.
 
-Docker, PostgreSQL, Airbyte, Databricks e AWS.
 
-## Passos:
+## 🛠️ Ferramentas Utilizadas
+- **Docker**: Ferramenta de containers utilizada para criar e gerenciar o ambiente local.
+- **PostgreSQL**: Banco de dados relacional usado como fonte de dados.
+- **Airbyte**: Ferramenta de integração de dados para sincronizar a fonte PostgreSQL com o Data Lakehouse no Databricks.
+- **Databricks**: Plataforma em nuvem usada para processamento e análise de dados.
+- **AWS**: Infraestrutura em nuvem utilizada para armazenamento no S3 e execução de clusters EC2.
 
+
+## 📋 **Descrição do Processo**
 * Banco de dados Relacional (local-Docker-PostgreSQL) > Airbyte (Local-Docker)> Data Lakehouse (Nuvem-Databricks-AWS)
 
-Já estão listados junto aos comandos.
 
-
-
-## Comandos:
+## 💻 **Comandos:** 
 
 ### Fonte de dados
 
-#Instalar o Docker de acordo com o sistema operacional da máquina local
+#### Instalar o Docker de acordo com o sistema operacional da máquina local
 
-#Executar o comando para baixar a imagem e criar o container:
+#### Executar o comando para baixar a imagem e criar o container:
 
 docker run --name db-dsa-fonte -p 5432:5432 -e POSTGRES_USER=dbadmin -e POSTGRES_PASSWORD=dbadmin123 -e POSTGRES_DB=postgresDSADB -d postgres
 
@@ -29,19 +39,20 @@ Banco de dados = postgresDSADB
 
 Schema = dbadmin
 
+---
 
 ### Construindo e carregando o banco de dados local como origem dos dados
 
 #Instale o pgAdmin, crie a conexão para o banco de dados e execute as instruções SQL abaixo
 https://www.pgadmin.org
 
-#Criar schema
-``` 
+#### Criar schema
+``` sql
 CREATE SCHEMA dbadmin AUTHORIZATION dbadmin;
 ```
 
-#Criar tabelas
-```
+#### Criar tabelas
+```sql
 CREATE TABLE dbadmin.tb_usuarios
 (
     id_usuario integer NOT NULL,
@@ -51,7 +62,7 @@ CREATE TABLE dbadmin.tb_usuarios
 );
 ```
 
-```
+```sql
 CREATE TABLE dbadmin.tb_cidades
 (
     codigo_cidade character varying(5),
@@ -60,8 +71,8 @@ CREATE TABLE dbadmin.tb_cidades
 );
 ```
 
-#Carregar dados
-```
+#### Carregar dados
+```sql
 INSERT INTO dbadmin.tb_cidades(codigo_cidade, nome_cidade)
 VALUES ('FOR01', 'Fortaleza');
 
@@ -88,7 +99,7 @@ VALUES (1005, 'Alex Tavares', 'FOR01');
 ```
 
 
-#Criar chave estrangeira
+#### Criar chave estrangeira
 ```
 ALTER TABLE dbadmin.tb_usuarios
     ADD CONSTRAINT "FK_CIDADE" FOREIGN KEY (cod_cidade)
@@ -97,11 +108,11 @@ ALTER TABLE dbadmin.tb_usuarios
     ON DELETE NO ACTION;
 ```
 
-
+---
 
 ### Instalando o Airbyte localmente no docker 
 
-#Execute os comandos abaixo para instalar o Airbyte
+#### Execute os comandos abaixo para instalar o Airbyte
 
 #Se necessário, instale o Git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git (De acordo com o sistema operacional)
 
@@ -113,7 +124,7 @@ docker-compose up
 
 
 
-#Preparar ambiente em nuvem com Databricks
+### Preparar ambiente em nuvem com Databricks
 
 Criar conta para Databricks e AWS
 
@@ -128,13 +139,13 @@ Obs: Dentro do cluster EC2 pela Databricks existem outras configurações que po
 
 ### Configuração do Airbyte
 
-#Fonte - PostgreSQL
+#### Fonte - PostgreSQL
 
 Configurar a fonte (PostgresLocal) com os dados do conteiner Postgres
 
 Clicar em setup source
 
-#Destino - Databricks
+#### Destino - Databricks
 
 Configurar o destino com os dados do cluster criado na Databricks: 
 
@@ -157,8 +168,9 @@ S3 Filename: {date} (É importante fazer essa configuração para tornar possív
 
 Clicar em setup destination
 
+---
 
-#Configurando a conexão Airbyte
+### Configurando a conexão Airbyte
 
 Selecionar sorce > selecionar destination > editar transfer (agendamento de execução) > destination namespace (mirror: levará a mesma estrutura a para o destino) > destination Stream Prefix (prefixo para diferenciar o destino) 
 
@@ -168,31 +180,33 @@ Incremental/Append: Adicionar apenas os dados que ainda não existem no destino 
 
 Clicar em sync now (Execução do pipeline de integração de dados)
 
+---
+
 ### Análise de dados com SQL
 
 Abrir Workspace :
 
-#Listar o conteúdo no data lake:
+#### Listar o conteúdo no data lake:
 ```
 dbutils.fs.ls("s3://projeto5-dsa-analytics/dados/dbadmin/") - Entre parenteses é a URI que estão as duas tabelas criadas no S3
 ```
 
-#Ler a tabela e gravar em um dataframe:
-```
+#### Ler a tabela e gravar em um dataframe:
+```python
 df = spark.read.load("s3://projeto5-dsa-analytics/dados/dbadmin/p5_tb_usuarios")
 display(df) 
 ```
 
-#Fazendo Join das duas tabelas com SQL
-```
+#### Fazendo Join das duas tabelas com SQL
+```sql
 %sql
 SELECT nome_usuario, nome_cidade
 FROM dbadmin.p5_tb_usuarios, dbadmin.p5_tb_cidades
 WHERE dbadmin.p5_tb_cidades.codigo_cidade = dbadmin.p5_tb_usuarios.cod_cidade;
 ```
 
-#Criar gráfico
-```
+#### Criar gráfico
+```sql
 %sql
 SELECT nome_cidade, COUNT(*)
 FROM dbadmin.p5_tb_usuarios, dbadmin.p5_tb_cidades
@@ -202,10 +216,19 @@ GROUP BY nome_cidade;
 
 Para a criação do gráfico basta acessar: sqldf > Table > + > Configurações do gráfico > Save
 
-#Criar Dashboard
+#### Criar Dashboard
 
 Acessar : Tabela criada > Show in Dashboard ou add to dashboard > Configurações Dashboard
 
 Acessar o grádio > Add to dashboard 
 
 Assim teremos o painel com as tabelas e o gráfico em visualização única
+
+
+---
+## Contato
+
+Se tiver dúvidas ou sugestões sobre o projeto, entre em contato comigo:
+
+- 💼 [LinkedIn](https://www.linkedin.com/in/henrique-k-32967a2b5/)
+- 🐱 [GitHub](https://github.com/henriquekurata?tab=overview&from=2024-09-01&to=2024-09-01)
