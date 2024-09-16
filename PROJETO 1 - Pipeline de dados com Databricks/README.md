@@ -156,7 +156,7 @@ Aceitar os termos de uso: Agree to the databricks JDBC
 Access Token: Ícone de usuário > Settings > User > Developer > Access Tokens > Generate new token 
 Database Schema: dbadmin (mesmo nome da fonte de dados)
 
-s3 bucket name: nome bucket S3
+S3 bucket name: nome bucket S3
 
 S3 bucket path: criar uma pasta com o nome "dados" no bucket S3
 
