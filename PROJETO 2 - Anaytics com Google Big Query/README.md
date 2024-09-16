@@ -1,24 +1,47 @@
-# ***Ambiente para análise de dados com Google Big Query e linguagem Python***
+# 🚀 ***Ambiente para análise de dados com Google Big Query e linguagem Python***
+
+## 📖 **Descrição do Projeto:**
+Este projeto consiste na criação de um ambiente de análise de dados utilizando Google BigQuery como data warehouse e Python para consultas e análise de dados. O pipeline de dados é construído com BigQuery, onde são criadas as tabelas, executadas queries SQL e gerados gráficos com Looker Studio e Google Colab. Além disso, o projeto conta com a execução de scripts Python para extrair, processar e analisar dados no BigQuery, incluindo a criação de um pipeline para detecção de anomalias nos dados.
 
 
-## Ferramentas: 
-Google Big Query e Python.
 
-## Passos: 
-Já listados junto aos comandos.
+## 🛠️ Ferramentas Utilizadas:
+- **Google BigQuery**: Data warehouse na nuvem que permite a execução de consultas SQL em grandes volumes de dados de forma rápida e escalável. Utilizado para armazenar e consultar dados no projeto.
+- **Python**: Linguagem de programação usada para realizar análises de dados e executar scripts para consultas e processamento dos dados no BigQuery, além de criar pipelines e detectar anomalias.
 
-## Comandos:
+
+## 📋 **Descrição do Processo**
+1. **Criação do Projeto no Google BigQuery**:
+   - Acesse a visão geral da Cloud e crie um novo projeto.
+2. **Criação das Tabelas do Data Warehouse**:
+   - Acesse BigQuery, escolha o projeto, e crie conjuntos de dados e tabelas conforme necessário.
+3. **Execução de Consultas SQL**:
+   - Execute consultas SQL nas tabelas para análises, como calcular médias e gerar relatórios.
+4. **Dados**:
+   - **Dimensão Cliente**: Informações sobre clientes.
+   - **Dimensão Localidade**: Informações sobre lojas e locais.
+   - **Dimensão Produto**: Informações sobre produtos.
+   - **Dimensão Tempo**: Informações sobre datas e horários.
+   - **Fato**: Dados de vendas.
+5. **Criação de Gráficos**:
+   - Utilize Looker Studio e Google Colab para explorar e visualizar os dados com gráficos e dashboards.
+6. **Scripts Python**:
+   - **Job1.py**: Executa consultas SQL no BigQuery e imprime resultados.
+   - **Job2.py**: Detecta anomalias nos dados de vendas usando técnicas estatísticas.
+
+
+## 💻 **Comandos:** 
 
 ### Criando o projeto do DW no GBQ
 
-#Acessar:
+#### Acessar:
 
 Visão geral da Cloud > Projetos > Criar projeto
 
 
 ### Criando as tabelas do DW
 
-#Acessar:
+#### Acessar:
  
  BigQuery > Explorer > Escolher o projeto > Criar conjunto de dados (tabelas, como se fossem Data Marts) > Selecionar Conjunto de dados > Criar tabela 
 
@@ -228,3 +251,12 @@ for chave, valor in dict_prod_unidades.items():
 print("\nPipeline Concluído com Sucesso!\n")
 
 ```
+
+
+---
+## Contato
+
+Se tiver dúvidas ou sugestões sobre o projeto, entre em contato comigo:
+
+- 💼 [LinkedIn](https://www.linkedin.com/in/henrique-k-32967a2b5/)
+- 🐱 [GitHub](https://github.com/henriquekurata?tab=overview&from=2024-09-01&to=2024-09-01)
