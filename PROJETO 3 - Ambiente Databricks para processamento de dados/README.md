@@ -1,27 +1,34 @@
-# ***Configuração de Databricks para processamento de dados com PySpark e análise de dados utilizando SQL***
+# 🚀 ***Configuração de Databricks para processamento de dados com PySpark e análise de dados utilizando SQL***
 
-## Ferramentas: 
+## 📖 **Descrição do Projeto:**
+Este projeto configura um ambiente de processamento de dados utilizando Databricks para executar transformações e análises em dados de música. O processamento é feito com PySpark, enquanto a análise é conduzida com SQL para identificar padrões de artistas e músicas.
 
-Databricks e CloudFormation.
 
-## Passos:
+## 🛠️ Ferramentas Utilizadas:
+- **Databricks**: Plataforma de processamento de dados na nuvem.
+- **CloudFormation**: Ferramenta de infraestrutura como código para criar recursos de nuvem.
+- **PySpark**: Framework de processamento distribuído para trabalhar com dados de grandes volumes.
 
-Já listados junto aos comandos.
 
-## Comandos:
+## 📋 **Descrição do Processo**
+1. Criação da infraestrutura no Databricks e AWS CloudFormation.
+2. Execução de scripts PySpark para ingestão de dados brutos e estruturação dos mesmos.
+3. Aplicação de transformações SQL em dados de música para análise.
+4. Execução de análises com consultas SQL para identificar padrões nos dados.
+5. Automação do pipeline com workflows no Databricks.
 
-### Criar a infraestrutura:
 
-#Criar a Worspace ao acessar a plataforma Databricks;
+## 💻 **Comandos:** 
 
-#Criar a stack do CloudFormation;
-
-#Abrir a Workspace do Databricks, acessar o menu "Compute" e criar um cluster de máquinas EC2 de acordo com o Hardware necessário;
+### 1. **Criação da Infraestrutura:**
+   - Criar a Workspace no Databricks.
+   - Criar a stack no CloudFormation.
+   - Criar um cluster no Databricks com recursos adequados de EC2 (Abrir a Workspace do Databricks, acessar o menu "Compute" e criar um cluster de máquinas EC2 de acordo com o Hardware necessário).
 
 Obs: Será utilizado dados de amostra da própria Databricks
 
 ### Arquivo PySpark para criar a estrutura de dados da fonte (pipe1.py)
-```
+```python
 from pyspark.sql.types import DoubleType, IntegerType, StringType, StructType, StructField
 
 # Caminho para a fonte de dados
@@ -85,7 +92,7 @@ Obs: Para inferência do schema automatica podemos utilizar o Auto Loader (Semel
 
 Basta criar um novo notebook, alterar a linguagem para SQL e executar o script abaixo:
 
-```
+```sql
 CREATE OR REPLACE TABLE
   tb_song_data (
     artist_id STRING,
@@ -120,7 +127,7 @@ FROM
 ### Analytics com Databricks SQL
 -- Qual artista publica mais músicas em cada ano?
 
-```
+```sql
 SELECT
   artist_name,
   count(artist_name)
