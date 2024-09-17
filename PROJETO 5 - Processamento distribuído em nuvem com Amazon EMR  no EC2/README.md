@@ -1,26 +1,47 @@
-# ***Processamento distribuído na nuvem com Amazon EMR no EC2 com PySpark***
+# 🚀 ***Processamento distribuído na nuvem com Amazon EMR no EC2 com PySpark***
 
-## Ferramentas: 
-
-Amazon EMR
-
-## Passos:
-
-Já listados junto aos comandos
+## 📖 **Descrição do Projeto:**
+Este projeto demonstra o uso de um cluster Amazon EMR para processar dados distribuídos utilizando PySpark. São realizados diversos passos, desde a configuração do cluster até a execução de pipelines de processamento de texto e a manipulação de dados no HDFS.
 
 
-## Comandos:
 
-### Criação do cluster EMR com Spark
-Acessar AWS > Amazon EMR > Criar Cluster > Versão Amazon EMR com Spark > Não usar catálogo de dados do AWS Glue > Sistema operacional Linux > Aplicar as atualizações mais recentes > Grupo de instâncias (Escolher as máquinas - Primário semelhante ao master, núcleo semelhante ao worker e tarefa para adicionar potência ao processamento dos dados) >
-Definir o tamanho do cluster manualmente > Configuração de rede (VPC e Subnet - onde estarão os endereços IP das máquinas - Deixar a padrão sugerida) > Grupos de segurança EC2 Firewall (Deixar o padrão sugerido) > Término do Cluster (Encerrar automaticamente - Recomendado) > Ações de bootstrap (personalização de configurações) > Logs do cluster (Bucket S3 - Deixar sugerido) > 
-Configurações de segurança e par de chaves do EC2 (Criar as chaves para acesso remoto ao cluster: Criar par de chaves > Tipo RSA e .ppk (para Windows) > Fazer o download das chaves > Criar chaves > Navegar > Escolher as chaves criadas)> Perfil e serviço do Amazon EMR > Escolha um perfil de serviço (Escolher o sugerido para vpc e subnet, já para o grupo de segurança utilizar o default) > Perfil de instância do EC2 >
-Escolha um perfil de instância > Bucket ou prefixos específicos do S3 nessa conta com acesso de leitura e gravação > Criar CLuster
+## 🛠️ Ferramentas Utilizadas:
+- Amazon EMR
+- EC2
+- HDFS
+- PySpark
 
-### Acessando o cluster remotamente
 
-Acessar o Amazon EMR > Cluster > Resumo > Conectar ao nó primário usando SSH > 
-Baixar o Putty de acordo com a arquitetura do computador > Iniciar o Putty > Colocar o endereço do cluster > Configurar as chaver ppk > Abrir
+## 📋 **Descrição do Processo:**
+
+- Criação de um cluster EMR com Spark na AWS.
+- Acesso remoto ao cluster via SSH para configuração.
+- Extração de dados de texto da internet.
+- Transferência dos dados para o HDFS (Sistema de Arquivos Distribuído Hadoop).
+- Processamento dos dados com PySpark, incluindo limpeza e manipulação de texto.
+- Armazenamento dos resultados no HDFS.
+- Transferência dos resultados para o sistema local e o Amazon S3.
+
+
+
+## 💻 **Comandos:** 
+
+### Criação do Cluster EMR com Spark:
+1. Acesse **AWS > Amazon EMR > Criar Cluster**.
+2. Selecione a versão do Amazon EMR com Spark.
+3. Não use o catálogo de dados do AWS Glue.
+4. Selecione o sistema operacional **Linux** e aplique as atualizações mais recentes.
+5. Defina o grupo de instâncias (máquinas primárias, núcleos e tarefas).
+6. Configure o tamanho do cluster e defina rede (VPC, Subnet) e grupos de segurança.
+7. Defina ações de bootstrap, logs no S3 e as chaves do EC2 para acesso remoto.
+8. Crie o Cluster.
+
+---
+
+### Acessando o Cluster Remotamente:
+1. Acesse o **Amazon EMR > Cluster > Resumo** e conecte ao nó primário via **SSH**.
+2. Configure o Putty com o endereço do cluster e as chaves **ppk**.
+3. Caso ocorra erro de timeout, edite as regras de entrada do firewall para liberar portas necessárias (TCP 22 e TCPs personalizados).
 
 Obs: Caso haja problemas de acesso como "timeout" basta acessar o cluster > propriedades > Rede e segurança > Grupos de segurança do EC2 (firewall) > Nó primário > 
 Editar regras de entrada (Criar regra: SSH > TCP 22 > Qualquer 0.0.0.0./0)
@@ -29,46 +50,41 @@ Editar regras de entrada (Criar regra: SSH > TCP 22 > Qualquer 0.0.0.0./0)
 Acessar cluster EMR > Aplicativos > UIs de aplicativo no nó primário > Para acessar essas portas é necessário liberar o acesso > 
 Editar regras de entrada > (Todos os TCPs > Presonalizado > Qualquer > 0.0.0.0./0) > Salvar regras
 
+---
 
 ### Executandos os pipelines no cluster:
-### Tarefa 1 - Extrair Dados de Texto 
+
+#### **Tarefa 1 - Extrair Dados de Texto**
 
 #Usaremos a url no formato abaixo (exemplo):
 #https://www.gutenberg.org/files/136/136.txt
 
-#Conecte via SSH no Cluster EMR.
+1. Conecte-se ao cluster via **SSH**.
 
-#Crie uma pasta no servidor:
-mkdir dsa-dados-entrada-local
-
-#Entre na pasta:
-cd dsa-dados-entrada-local
-
-#Crie um script sh
-vi tarefa1.sh
-
-#Coloque o conteúdo abaixo no script:
-
-```
-#!/bin/bash 
-for i in {1340..1400} 
-do 
-    wget "http://www.gutenberg.org/files/$i/$i.txt" 
-done
-```
-
-#Altere a permissão do arquivo para torná-lo um executável:
-chmod +x tarefa1.sh
-
-#Execute a tarefa 1:
-./tarefa1.sh
-
-
-
+2. Crie uma pasta para armazenar os dados:
+    ```bash
+    mkdir dsa-dados-entrada-local
+    cd dsa-dados-entrada-local
+    vi tarefa1.sh
+    ```
+3. Adicione o seguinte script ao arquivo:
+    ```bash
+    #!/bin/bash 
+    for i in {1340..1400} 
+    do 
+        wget "http://www.gutenberg.org/files/$i/$i.txt" 
+    done
+    ```
+4. Execute o script para baixar os dados:
+    ```bash
+    chmod +x tarefa1.sh
+    ./tarefa1.sh
+    ```
+---
 
 ### Tarefa 2 - Mover os Dados de Texto Para o Sistema de Arquivos Distribuído
 
-#Acesse a pasta home do usuário no Cluster EMR
+#### Acesse a pasta home do usuário no Cluster EMR
 
 cd ~
 
@@ -86,8 +102,8 @@ hdfs dfs -ls /user/hadoop
 
 hdfs dfs -put dsa-dados-entrada-local/*.txt dsa-dados-entrada-dfs
 
-# Verifique se os arquivos estão agora no ambiente distribuído:
-
+#### Verifique se os arquivos estão agora no ambiente distribuído:
+```
 hdfs dfs -ls /
 
 hdfs dfs -ls /user
@@ -97,8 +113,8 @@ hdfs dfs -ls /user/hadoop
 hdfs dfs -ls /user/hadoop/dsa-dados-entrada-dfs
 
 hdfs dfs -ls /user/hadoop/dsa-dados-entrada-dfs/1340.txt
-
-
+```
+---
 
 ### Tarefa 3 - Criar e Executar o Pipeline
 
@@ -112,7 +128,7 @@ vi projeto6.py
 
 #Coloque o conteúdo abaixo no script:
 
-```
+```py
 # Imports
 import re
 import string
@@ -168,19 +184,20 @@ spark.stop()
 
 ```
 
-#Execute o script e submete o job para o Spark:
+#### Execute o script e submete o job para o Spark:
+```
 spark-submit projeto6.py
+```
 
-
-
+---
 
 ### Tarefa 4 - Manipular os Dados de Texto Após o Processamento
 
-#Verfique se o resultado foi gravado no HDFS:
+#### Verfique se o resultado foi gravado no HDFS:
 
 hdfs dfs -ls /user/hadoop/dsa-dados-saida-dfs/*
 
-#Crie uma pasta para gravar os dados de saída no sistema de arquivos local:
+#### Crie uma pasta para gravar os dados de saída no sistema de arquivos local:
 
 mkdir dsa-dados-saida-local
 
@@ -188,15 +205,16 @@ mkdir dsa-dados-saida-local
 
 cd dsa-dados-saida-local
 
-#Copie os arquivos de saída do sistema de arquivos distribuído para o sistema de arquivos local:
+#### Copie os arquivos de saída do sistema de arquivos distribuído para o sistema de arquivos local:
 
 hdfs dfs -get /user/hadoop/dsa-dados-saida-dfs/*
 
 
+---
 
 ### Tarefa 5 - Combinar os Arquivos de Saída e Obter o Resultado do Pipeline no Cluster EMR
 
-#Acesse a pasta com os dados de saída no sistema local no Cluster EMR:
+#### Acesse a pasta com os dados de saída no sistema local no Cluster EMR:
 
 cd dsa-dados-saida-local
 
@@ -204,7 +222,7 @@ cd dsa-dados-saida-local
 
 vi combina_json.sh
 
-#Coloque no arquivo o conteúdo abaixo para combinar os arquivos JSON e gerar um único arquivo de saída:
+#### Coloque no arquivo o conteúdo abaixo para combinar os arquivos JSON e gerar um único arquivo de saída:
 ```
 #!/bin/bash
 # Encontra todos os arquivos JSON e os passa para jq para combinação em um único array
@@ -226,6 +244,16 @@ zip dsa-resultado.zip dsa-resultado.json
 aws s3 cp dsa-resultado.zip s3://aws-logs-890582101704-us-east-2/elasticmapreduce/dsa-resultado.zip
 ```
 
-#Acesse o console do S3 e faça o download do arquivo para a máquina local.
+#### Acesse o console do S3 e faça o download do arquivo para a máquina local.
+   ```bash
+    zip dsa-resultado.zip dsa-resultado.json
+    aws s3 cp dsa-resultado.zip s3://aws-logs-890582101704-us-east-2/elasticmapreduce/dsa-resultado.zip
+    ```
 
+---
+## Contato
 
+Se tiver dúvidas ou sugestões sobre o projeto, entre em contato comigo:
+
+- 💼 [LinkedIn](https://www.linkedin.com/in/henrique-k-32967a2b5/)
+- 🐱 [GitHub](https://github.com/henriquekurata?tab=overview&from=2024-09-01&to=2024-09-01)
