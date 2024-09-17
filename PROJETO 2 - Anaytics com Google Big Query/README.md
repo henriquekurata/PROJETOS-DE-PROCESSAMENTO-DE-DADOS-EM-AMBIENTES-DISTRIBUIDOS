@@ -38,6 +38,7 @@ Este projeto consiste na criação de um ambiente de análise de dados utilizand
 
 Visão geral da Cloud > Projetos > Criar projeto
 
+---
 
 ### Criando as tabelas do DW
 
@@ -45,10 +46,12 @@ Visão geral da Cloud > Projetos > Criar projeto
  
  BigQuery > Explorer > Escolher o projeto > Criar conjunto de dados (tabelas, como se fossem Data Marts) > Selecionar Conjunto de dados > Criar tabela 
 
+---
 
 ### Executando consultas SQL no DW
 
 Selecione a tabela > Consulta > Em uma nova guia > Executar query SQL > Exemplo:
+
 ```
 SELECT Loja, round(avg(total), 2) as Media_Venda  
 FROM `dwprojeto3-405116.databasep3.FATO_VENDA` as A, `databasep3.DIMENSAO_LOCALIDADE` as B
@@ -56,11 +59,13 @@ WHERE A.Localidade_ID = B.Localidade_ID
 GROUP BY Loja
 ORDER BY Loja
 ```
+---
 
-### Dados
+### Dados (Amostra)
 
-#DimensaoCliente
+#### DimensaoCliente
 
+```
 Cliente_ID,Nome,Email,Nivel_Educacional
 
 0,Henrique FogaÃ§a,maite55@example.com,GraduaÃ§Ã£o
@@ -73,9 +78,11 @@ Cliente_ID,Nome,Email,Nivel_Educacional
 MÃ©dio
 
 4,Emanuel Duarte,isisramos@example.net,PÃ³s-GraduaÃ§Ã£o
+```
 
-#DimensaoLocalidade
+#### DimensaoLocalidade
 
+```
 Localidade_ID,Loja,Estado,Pais
 
 0,Loja 4,ParaÃ­ba,Brasil
@@ -87,9 +94,11 @@ Localidade_ID,Loja,Estado,Pais
 3,Loja 4,Santa Catarina,Brasil
 
 4,Loja 3,ParÃ¡,Brasil
+```
 
-#DimensaoProduto
+#### DimensaoProduto
 
+```
 Produto_ID,Nome,Preco
 
 0,Lavadora,2513.53
@@ -101,9 +110,11 @@ Produto_ID,Nome,Preco
 3,Lavadora,1789.14
 
 4,Refrigerador,2204.26
+```
 
-#DimensaoTempo
+#### DimensaoTempo
 
+```
 Tempo_ID,Data,Hora
 
 0,2023-04-29,07:46:13
@@ -115,9 +126,11 @@ Tempo_ID,Data,Hora
 3,2023-03-11,11:55:10
 
 4,2023-06-21,08:14:07
+```
 
-#Fato
+#### Fato
 
+```
 Venda_ID,Cliente_ID,Produto_ID,Tempo_ID,Localidade_ID,Quantidade,Total
 
 0,39,40,98,61,2,5937.62
@@ -129,12 +142,13 @@ Venda_ID,Cliente_ID,Produto_ID,Tempo_ID,Localidade_ID,Quantidade,Total
 3,36,4,78,30,3,6612.78
 
 4,55,60,96,41,5,14593.85
+```
 
-
+---
 
 ### Criando gráficos com Looker Studio e Google Colab no DW
 
-#Após executar a query SQL: 
+#### Após executar a query SQL: 
 
 Selecionar Explorar dados > Explorar com as planilhas ou Explorar com o Looker Studio ou Explorar com Google Colab (Fornece alguns scripts Python, porém também dá para realizar tarefas com o próprio programa)
 
@@ -146,10 +160,13 @@ Acessar Chave > Adicionar chave > Criar nova chave > Json
 
 Instalar interpretador da linguagem Python na máquina local > Anaconda Python 
 
-Abrir o CMD e acessar pelo terminal o local do arquivo Job1.py > pip install google.cloud > pip install google-cloud-bigquery > python job1.py
+Abrir o CMD e acessar pelo terminal o local do arquivo Job1.py > pip install google.cloud > pip install google-cloud-bigquery > python job1.py (À seguir)
+
+---
 
 ### Jo1.py
-```
+
+```python
 import os
 from google.cloud import bigquery
 
@@ -179,10 +196,11 @@ print("Dados Extraídos do DW:\n")
 for row in query_job:
     print("loja={}, media={}".format(row[0], row["Media_Venda"]))
 ```
-
+---
 
 ### Pipeline de Detecção de Anomalias
-```
+
+```python
 # Imports
 import os
 import numpy as np
@@ -207,12 +225,14 @@ query = """
     ORDER BY Nome
 """
 ```
-
+---
 
 
 ### Executa a query anterior no DW para identificação de anomalias
-#Job2.py
-```
+
+#### Job2.py
+
+```python
 query_job = client.query(query)
 
 # Inicializa lista e dicionário
