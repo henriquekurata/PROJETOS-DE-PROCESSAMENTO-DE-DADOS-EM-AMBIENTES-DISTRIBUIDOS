@@ -1,4 +1,4 @@
-# 🚀 ****Usando Snowflake como parte do Workflow***
+# 🚀 ***Usando Snowflake como parte do Workflow***
 
 ## 📖 **Descrição do Projeto:**
 Este projeto demonstra o uso do Snowflake como parte de um workflow de análise de dados, incluindo carga de dados, consultas SQL, visualização em dashboards e pré-processamento para machine learning.
@@ -24,6 +24,7 @@ Este projeto demonstra o uso do Snowflake como parte de um workflow de análise 
 1. Escolher o provedor de nuvem > AWS.
 2. Criar conta no Snowflake.
 
+---
 
 ### Amostra dos dados utilizados
 
@@ -39,19 +40,20 @@ Idade,Salario,Genero,Escolaridade,Score_Exame_Psicotecnico
 
 62,28534.995326705834,Outro,Superior,68.0
 
-
-### Carga dos dados
+---
 
 ### Carga dos dados
 1. Acessar **Data** > **Database** > **+ Database**.
 2. Criar o banco de dados e o esquema.
 3. Arrastar os arquivos da máquina local para o Snowflake e carregar a tabela.
 
+---
 
 ### Dashboards
 1. Acessar **Projects** > **Dashboards** > **+ Dashboard**.
 2. Criar um novo painel com **New Tile** > **From SQL Worksheet**.
 
+---
 
 ### Consultas
 
@@ -65,7 +67,7 @@ group by escolaridade
 
 Obs: Nessa seção é possível visualizar os dados através do SQL e também fazer visualização de gráficos
 
-
+---
 
 ### Criando aplicação de dados com Streamlit
 
@@ -74,6 +76,7 @@ Acessar projects > Streamlit > + Streamlit App > Criar Streamlit
 Obs: Caso seja necessário, é preciso dar privilégios de acesso ao banco de dados
 
 
+---
 
 ### Caso de Uso - Pré-Processamento Para Machine Learning
 
