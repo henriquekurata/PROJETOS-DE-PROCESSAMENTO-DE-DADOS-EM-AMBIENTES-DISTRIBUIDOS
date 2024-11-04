@@ -44,21 +44,8 @@ Visão geral da Cloud > Projetos > Criar projeto
 
 #### Acessar:
  
- BigQuery > Explorer > Escolher o projeto > Criar conjunto de dados (tabelas, como se fossem Data Marts) > Selecionar Conjunto de dados > Criar tabela 
+ BigQuery > Explorer > Escolher o projeto > Criar conjunto de dados (tabelas, como se fossem Data Marts) > Selecionar Conjunto de dados > Criar yabela de = "Fazer Upload" > Selecionar arquivo > Formato do arquivo > Nome da tabela > Tipo de tabela = "Tabela nativa" > Esquema = "Detectar automaticamente" > Criar tabela 
 
----
-
-### Executando consultas SQL no DW
-
-Selecione a tabela > Consulta > Em uma nova guia > Executar query SQL > Exemplo:
-
-```
-SELECT Loja, round(avg(total), 2) as Media_Venda  
-FROM `dwprojeto3-405116.databasep3.FATO_VENDA` as A, `databasep3.DIMENSAO_LOCALIDADE` as B
-WHERE A.Localidade_ID = B.Localidade_ID
-GROUP BY Loja
-ORDER BY Loja
-```
 ---
 
 ### Dados (Amostra)
@@ -144,6 +131,20 @@ Venda_ID,Cliente_ID,Produto_ID,Tempo_ID,Localidade_ID,Quantidade,Total
 4,55,60,96,41,5,14593.85
 ```
 
+---
+
+
+### Executando consultas SQL no DW
+
+Selecione a tabela > Consulta > Em uma nova guia > Executar query SQL > Exemplo:
+
+```
+SELECT Loja, round(avg(total), 2) as Media_Venda  
+FROM `dwprojeto3-405116.databasep3.FATO_VENDA` as A, `databasep3.DIMENSAO_LOCALIDADE` as B
+WHERE A.Localidade_ID = B.Localidade_ID
+GROUP BY Loja
+ORDER BY Loja
+```
 ---
 
 ### Criando gráficos com Looker Studio e Google Colab no DW
