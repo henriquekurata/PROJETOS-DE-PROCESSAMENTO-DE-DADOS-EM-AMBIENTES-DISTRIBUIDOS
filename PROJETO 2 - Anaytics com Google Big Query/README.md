@@ -155,7 +155,7 @@ Selecionar Explorar dados > Explorar com as planilhas ou Explorar com o Looker S
 
 #Para executar o google Colab na máquina local é necessário criar uma conta de serviço, criar chave e instalar Python:
 
-Acessar menu > AIM e administrador > Conta de serviço > PErfil necessário (Papel = "Editor") > Criar conta de serviço 
+Acessar menu > AIM e administrador > Conta de serviço > Perfil necessário (Papel = "Editor") > Criar conta de serviço 
 
 Acessar Chaves (IAM e adminstrador > Contas de servço) > Parte superior > Adicionar chave > Criar nova chave > Json
 
