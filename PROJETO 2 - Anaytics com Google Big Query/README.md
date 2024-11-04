@@ -155,9 +155,9 @@ Selecionar Explorar dados > Explorar com as planilhas ou Explorar com o Looker S
 
 #Para executar o google Colab na máquina local é necessário criar uma conta de serviço, criar chave e instalar Python:
 
-Acessar menu > AIM e administrador > Conta de serviço > Criar conta de serviço 
+Acessar menu > AIM e administrador > Conta de serviço > PErfil necessário (Papel = "Editor") > Criar conta de serviço 
 
-Acessar Chave > Adicionar chave > Criar nova chave > Json
+Acessar Chaves (IAM e adminstrador > Contas de servço) > Parte superior > Adicionar chave > Criar nova chave > Json
 
 Instalar interpretador da linguagem Python na máquina local > Anaconda Python 
 
@@ -171,7 +171,7 @@ Abrir o CMD e acessar pelo terminal o local do arquivo Job1.py > pip install goo
 import os
 from google.cloud import bigquery
 
-# Define o caminho para o arquivo de credenciais (coloque o caminho da chave no seu computador)
+# Define o caminho para o arquivo de credenciais (coloque o caminho da chave JSON no seu computador criada no item anterior)
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/Users/kurata2/Downloads/dwprojeto3-405116-a38468e68d41.json" 
 
 print("Service Account KEY:", os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
