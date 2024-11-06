@@ -95,7 +95,7 @@ ENTRYPOINT ["./entrypoint.sh"]
 
 
 
-#docker-compose.yml (Arquivo para criação dos containers docker do Spark)
+### docker-compose.yml (Arquivo para criação dos containers docker do Spark)
 version: '3.8'
 
 services:
@@ -155,7 +155,7 @@ volumes:
 ### Arquivos de configurações do Spark
 
 
-#### conf
+#### conf > spark-defaults.conf
 ```
 spark.master                           spark://spark-master:7077
 spark.eventLog.enabled                 true
