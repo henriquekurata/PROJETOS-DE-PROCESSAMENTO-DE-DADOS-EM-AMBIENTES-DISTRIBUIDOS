@@ -276,7 +276,7 @@ docker-compose logs
 ```
 ---
 
-### Executando os pipelines:
+### Executando os pipelines (A partir do CMD da máquina local):
 ```
 docker exec dsa-spark-master spark-submit --master spark://
 
