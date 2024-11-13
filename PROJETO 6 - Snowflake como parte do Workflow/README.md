@@ -53,9 +53,8 @@ Idade,Salario,Genero,Escolaridade,Score_Exame_Psicotecnico
 1. Acessar **Projects** > **Dashboards** > **+ Dashboard**.
 2. Criar um novo painel com **New Tile** > **From SQL Worksheet**.
 
----
 
-### Consultas
+#### Consultas
 
 #### Exemplo de consulta SQL para calcular a média salarial por escolaridade:
 
